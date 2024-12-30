@@ -11,10 +11,27 @@ class TaskController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $tasks = Task::with('user')->latest()->paginate(10);
-        return view('tasks.index', compact('tasks'));
+        $query = Task::with('user');
+
+        if ($request->filled('search')) {
+            $query->where('title', 'like', '%' . $request->search . '%')
+                ->orWhere('description', 'like', '%' . $request->search . '%');
+        }
+
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
+        }
+
+        if ($request->filled('user_id')) {
+            $query->where('user_id', $request->user_id);
+        }
+
+        $tasks = $query->latest()->paginate(10);
+        $users = User::all();
+
+        return view('tasks.index', compact('tasks', 'users'));
     }
 
     /**
@@ -77,7 +94,7 @@ class TaskController extends Controller
 
         $task->update($validated);
 
-        return redirect()->route('tasks.index')
+        return redirect()->route('tasks.show', $task)
             ->with('success', 'Görev başarıyla güncellendi.');
     }
 
