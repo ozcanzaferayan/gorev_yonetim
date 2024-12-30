@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Task;
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,11 +13,33 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
+        $user = User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
+        ]);
+
+        Task::create([
+            'title' => 'Acil Görev',
+            'description' => 'Bu görev hemen tamamlanmalı.',
+            'status' => 'pending',
+            'user_id' => $user->id,
+            'due_date' => now()->addDays(3),
+        ]);
+
+        Task::create([
+            'title' => 'Devam Eden Görev',
+            'description' => 'Bu görev üzerinde çalışılıyor.',
+            'status' => 'in_progress',
+            'user_id' => $user->id,
+            'due_date' => now()->addWeek(),
+        ]);
+
+        Task::create([
+            'title' => 'Tamamlanan Görev',
+            'description' => 'Bu görev tamamlandı.',
+            'status' => 'completed',
+            'user_id' => $user->id,
+            'due_date' => now()->subDays(2),
         ]);
     }
 }
