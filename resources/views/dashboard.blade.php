@@ -37,21 +37,21 @@
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mx-auto mb-1 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        <span class="text-xs text-muted-foreground block">Bekliyor</span>
+                        <span class="text-xs text-muted-foreground block">{{ task_status_text('pending') }}</span>
                         <span class="text-lg font-semibold text-yellow-600">{{ $pendingTasks }}</span>
                     </div>
                     <div class="bg-background rounded p-2 text-center">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mx-auto mb-1 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                         </svg>
-                        <span class="text-xs text-muted-foreground block">Devam Ediyor</span>
+                        <span class="text-xs text-muted-foreground block">{{ task_status_text('in_progress') }}</span>
                         <span class="text-lg font-semibold text-blue-600">{{ $inProgressTasks }}</span>
                     </div>
                     <div class="bg-background rounded p-2 text-center">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mx-auto mb-1 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        <span class="text-xs text-muted-foreground block">Tamamlandı</span>
+                        <span class="text-xs text-muted-foreground block">{{ task_status_text('completed') }}</span>
                         <span class="text-lg font-semibold text-green-600">{{ $completedTasks }}</span>
                     </div>
                 </div>
@@ -141,7 +141,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                 @endif
-                                <span>{{ ucfirst($task->status) }}</span>
+                                <span>{{ task_status_text($task->status) }}</span>
                             </span>
                         </div>
                         <div class="mt-2 flex items-center justify-between">
@@ -230,7 +230,7 @@
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                         </svg>
                                     @endif
-                                    <span>{{ ucfirst($task->status) }}</span>
+                                    <span>{{ task_status_text($task->status) }}</span>
                                 </span>
                                 <a href="{{ route('tasks.show', $task) }}" class="text-sm text-primary hover:underline flex items-center space-x-1">
                                     <span>Detay</span>

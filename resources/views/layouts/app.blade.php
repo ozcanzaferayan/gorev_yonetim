@@ -50,12 +50,16 @@
                                 </svg>
                             </button>
 
-                            <div class="relative ml-3">
+                            <!-- User Dropdown -->
+                            <div class="relative ml-3" x-data="{ open: false }">
                                 <div>
                                     <button type="button"
+                                        @click="open = !open"
                                         class="flex rounded-full bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-                                        id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                                        <span class="sr-only">Open user menu</span>
+                                        id="user-menu-button" 
+                                        aria-expanded="false" 
+                                        aria-haspopup="true">
+                                        <span class="sr-only">Kullanıcı menüsünü aç</span>
                                         @if(Auth::user()->avatar_url)
                                             <img class="h-8 w-8 rounded-full" src="{{ Auth::user()->avatar_url }}" alt="{{ Auth::user()->name }}">
                                         @else
@@ -67,8 +71,38 @@
                                         @endif
                                     </button>
                                 </div>
+
+                                <!-- Dropdown menu -->
+                                <div x-show="open" 
+                                    @click.away="open = false"
+                                    x-transition:enter="transition ease-out duration-100"
+                                    x-transition:enter-start="transform opacity-0 scale-95"
+                                    x-transition:enter-end="transform opacity-100 scale-100"
+                                    x-transition:leave="transition ease-in duration-75"
+                                    x-transition:leave-start="transform opacity-100 scale-100"
+                                    x-transition:leave-end="transform opacity-0 scale-95"
+                                    class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-card py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                                    role="menu" 
+                                    aria-orientation="vertical" 
+                                    aria-labelledby="user-menu-button" 
+                                    tabindex="-1">
+                                    <div class="px-4 py-2 text-sm text-muted-foreground border-b border-border">
+                                        <div class="font-medium text-foreground">{{ Auth::user()->name }}</div>
+                                        <div class="text-xs">{{ Auth::user()->email }}</div>
+                                    </div>
+                                    <form method="POST" action="{{ route('logout') }}" role="none">
+                                        @csrf
+                                        <button type="submit"
+                                            class="w-full text-left px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground"
+                                            role="menuitem" 
+                                            tabindex="-1">
+                                            Çıkış Yap
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
+
                         <div class="-mr-2 flex items-center sm:hidden">
                             <!-- Mobile menu button -->
                             <button type="button"
@@ -76,7 +110,7 @@
                                 class="inline-flex items-center justify-center rounded-md p-2 text-muted-foreground hover:bg-accent hover:text-accent-foreground focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
                                 aria-controls="mobile-menu" 
                                 :aria-expanded="mobileMenuOpen">
-                                <span class="sr-only">Open main menu</span>
+                                <span class="sr-only">Ana menüyü aç</span>
                                 <svg 
                                     x-show="!mobileMenuOpen"
                                     class="h-6 w-6" 
@@ -152,6 +186,15 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
                                 </svg>
                             </button>
+                        </div>
+                        <div class="mt-3 space-y-1 px-2">
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit"
+                                    class="block w-full rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-accent hover:text-accent-foreground">
+                                    Çıkış Yap
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
