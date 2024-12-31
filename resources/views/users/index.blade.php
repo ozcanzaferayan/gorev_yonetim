@@ -3,9 +3,19 @@
 @section('content')
 <div class="space-y-6">
     <div class="flex justify-between items-center">
-        <h1 class="text-2xl font-bold text-foreground">Kullanıcılar</h1>
-        <a href="{{ route('users.create') }}">
-            <x-ui.button>Yeni Kullanıcı Ekle</x-ui.button>
+        <div class="flex items-center space-x-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+            </svg>
+            <h1 class="text-2xl font-bold text-foreground">Kullanıcılar</h1>
+        </div>
+        <a href="{{ route('users.create') }}" class="inline-flex items-center space-x-2">
+            <x-ui.button>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+                </svg>
+                Yeni Kullanıcı Ekle
+            </x-ui.button>
         </a>
     </div>
 
@@ -22,12 +32,54 @@
                 <table class="w-full">
                     <thead class="bg-muted">
                         <tr>
-                            <th class="px-4 py-3 text-left text-sm font-medium text-muted-foreground">Avatar</th>
-                            <th class="px-4 py-3 text-left text-sm font-medium text-muted-foreground">Ad Soyad</th>
-                            <th class="px-4 py-3 text-left text-sm font-medium text-muted-foreground">Email</th>
-                            <th class="px-4 py-3 text-left text-sm font-medium text-muted-foreground">Görev Sayısı</th>
-                            <th class="px-4 py-3 text-left text-sm font-medium text-muted-foreground">Kayıt Tarihi</th>
-                            <th class="px-4 py-3 text-right text-sm font-medium text-muted-foreground">İşlemler</th>
+                            <th class="px-4 py-3 text-left text-sm font-medium text-muted-foreground">
+                                <div class="flex items-center space-x-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    <span>Avatar</span>
+                                </div>
+                            </th>
+                            <th class="px-4 py-3 text-left text-sm font-medium text-muted-foreground">
+                                <div class="flex items-center space-x-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                    </svg>
+                                    <span>Ad Soyad</span>
+                                </div>
+                            </th>
+                            <th class="px-4 py-3 text-left text-sm font-medium text-muted-foreground">
+                                <div class="flex items-center space-x-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                    </svg>
+                                    <span>Email</span>
+                                </div>
+                            </th>
+                            <th class="px-4 py-3 text-left text-sm font-medium text-muted-foreground">
+                                <div class="flex items-center space-x-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                                    </svg>
+                                    <span>Görev Sayısı</span>
+                                </div>
+                            </th>
+                            <th class="px-4 py-3 text-left text-sm font-medium text-muted-foreground">
+                                <div class="flex items-center space-x-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                    </svg>
+                                    <span>Kayıt Tarihi</span>
+                                </div>
+                            </th>
+                            <th class="px-4 py-3 text-right text-sm font-medium text-muted-foreground">
+                                <div class="flex items-center justify-end space-x-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                                    </svg>
+                                    <span>İşlemler</span>
+                                </div>
+                            </th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-border">
@@ -38,8 +90,22 @@
                                 </td>
                                 <td class="px-4 py-3 text-sm">{{ $user->name }}</td>
                                 <td class="px-4 py-3 text-sm">{{ $user->email }}</td>
-                                <td class="px-4 py-3 text-sm">{{ $user->tasks_count }}</td>
-                                <td class="px-4 py-3 text-sm">{{ $user->created_at->format('d.m.Y') }}</td>
+                                <td class="px-4 py-3 text-sm">
+                                    <div class="flex items-center space-x-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                                        </svg>
+                                        <span>{{ $user->tasks_count }}</span>
+                                    </div>
+                                </td>
+                                <td class="px-4 py-3 text-sm">
+                                    <div class="flex items-center space-x-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                        </svg>
+                                        <span>{{ $user->created_at->format('d.m.Y') }}</span>
+                                    </div>
+                                </td>
                                 <td class="px-4 py-3 text-sm">
                                     <div class="flex items-center justify-end space-x-3">
                                         <a href="{{ route('users.show', $user) }}" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" title="Detay">
@@ -69,7 +135,12 @@
                         @empty
                             <tr>
                                 <td colspan="6" class="px-4 py-3 text-sm text-center text-muted-foreground">
-                                    Henüz kullanıcı bulunmuyor.
+                                    <div class="flex items-center justify-center space-x-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+                                        </svg>
+                                        <span>Henüz kullanıcı bulunmuyor.</span>
+                                    </div>
                                 </td>
                             </tr>
                         @endforelse
@@ -92,9 +163,19 @@
                         <p class="text-sm font-medium text-foreground truncate">{{ $user->name }}</p>
                         <p class="text-sm text-muted-foreground truncate">{{ $user->email }}</p>
                         <div class="flex items-center mt-1 space-x-2 text-xs text-muted-foreground">
-                            <span>{{ $user->tasks_count }} görev</span>
+                            <div class="flex items-center space-x-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                                </svg>
+                                <span>{{ $user->tasks_count }} görev</span>
+                            </div>
                             <span>•</span>
-                            <span>{{ $user->created_at->format('d.m.Y') }}</span>
+                            <div class="flex items-center space-x-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
+                                <span>{{ $user->created_at->format('d.m.Y') }}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -124,7 +205,12 @@
             </div>
         @empty
             <div class="bg-card rounded-lg shadow p-4 text-center text-muted-foreground">
-                Henüz kullanıcı bulunmuyor.
+                <div class="flex items-center justify-center space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+                    </svg>
+                    <span>Henüz kullanıcı bulunmuyor.</span>
+                </div>
             </div>
         @endforelse
 
