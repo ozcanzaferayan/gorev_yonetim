@@ -2,6 +2,24 @@
 
 Modern ve kullanıcı dostu bir görev yönetim uygulaması. Laravel, Tailwind CSS ve Alpine.js kullanılarak geliştirilmiştir.
 
+## Ekran Görüntüleri
+
+### Dashboard
+
+![Dashboard](screenshots/dashboard.png)
+
+### Görevler
+
+![Görevler](screenshots/tasks.png)
+
+### Görevler (Mobil)
+
+![Görevler Mobil](screenshots/tasks_mobile.png)
+
+### Kullanıcılar
+
+![Kullanıcılar](screenshots/users.png)
+
 ## Özellikler
 
 -   🎨 Modern ve responsive tasarım
