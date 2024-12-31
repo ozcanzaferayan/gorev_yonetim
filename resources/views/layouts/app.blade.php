@@ -56,11 +56,15 @@
                                         class="flex rounded-full bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                                         id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                                         <span class="sr-only">Open user menu</span>
-                                        <div class="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center">
-                                            <span class="text-sm font-medium text-primary">
-                                                {{ substr(Auth::user()->name, 0, 2) }}
-                                            </span>
-                                        </div>
+                                        @if(Auth::user()->avatar_url)
+                                            <img class="h-8 w-8 rounded-full" src="{{ Auth::user()->avatar_url }}" alt="{{ Auth::user()->name }}">
+                                        @else
+                                            <div class="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center">
+                                                <span class="text-sm font-medium text-primary">
+                                                    {{ substr(Auth::user()->name, 0, 2) }}
+                                                </span>
+                                            </div>
+                                        @endif
                                     </button>
                                 </div>
                             </div>
@@ -101,9 +105,13 @@
                         <div class="flex items-center px-4">
                             <div class="flex-shrink-0">
                                 <div class="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
-                                    <span class="text-sm font-medium text-primary">
-                                        {{ substr(Auth::user()->name, 0, 2) }}
-                                    </span>
+                                    @if(Auth::user()->avatar_url)
+                                        <img class="h-10 w-10 rounded-full" src="{{ Auth::user()->avatar_url }}" alt="{{ Auth::user()->name }}">
+                                    @else
+                                        <span class="text-sm font-medium text-primary">
+                                            {{ substr(Auth::user()->name, 0, 2) }}
+                                        </span>
+                                    @endif
                                 </div>
                             </div>
                             <div class="ml-3">

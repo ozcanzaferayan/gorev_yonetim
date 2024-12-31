@@ -15,6 +15,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'avatar_url',
     ];
 
     protected $hidden = [
@@ -30,5 +31,10 @@ class User extends Authenticatable
     public function tasks()
     {
         return $this->hasMany(Task::class);
+    }
+
+    public function getAvatarUrlAttribute($value)
+    {
+        return "https://api.dicebear.com/7.x/lorelei/svg?seed=" . urlencode($this->email);
     }
 }
